@@ -1,5 +1,7 @@
 package com.example.entity;
 
+import javax.persistence.CascadeType;
+import javax.persistence.ManyToMany;
 import java.util.Set;
 
 /**
@@ -22,6 +24,7 @@ public class Play {
         return name;
     }
 
+    @ManyToMany(cascade = CascadeType.ALL)
     public Set<Actor> getActors() {
         return actors;
     }
