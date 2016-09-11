@@ -1,7 +1,7 @@
 package com.example;
 
 import com.example.repository.ActorRepository;
-import com.example.repository.PlayRepository;
+import com.example.repository.FilmRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
@@ -15,19 +15,19 @@ import org.springframework.stereotype.Component;
 public class DataHealthIndicator implements HealthIndicator {
 
     private final ActorRepository actorRepository;
-    private final PlayRepository playRepository;
+    private final FilmRepository filmRepository;
 
     @Autowired
-    public DataHealthIndicator(ActorRepository actorRepository, PlayRepository playRepository) {
+    public DataHealthIndicator(ActorRepository actorRepository, FilmRepository filmRepository) {
         this.actorRepository = actorRepository;
-        this.playRepository = playRepository;
+        this.filmRepository = filmRepository;
     }
 
     @Override
     public Health health() {
         return Health.up()
                 .withDetail("Actors count", actorRepository.count())
-                .withDetail("Plays count", playRepository.count())
+                .withDetail("Films count", filmRepository.count())
                 .build();
     }
 }

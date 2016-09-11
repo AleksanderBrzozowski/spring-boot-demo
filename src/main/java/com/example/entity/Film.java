@@ -16,19 +16,19 @@ import java.util.Set;
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 @Entity
-public class Play {
+public class Film {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "play_actor",
-            joinColumns = @JoinColumn(name = "play_id"),
+    @JoinTable(name = "film_actor",
+            joinColumns = @JoinColumn(name = "film_id"),
             inverseJoinColumns = @JoinColumn(name = "actor_id"))
     private Set<Actor> actors = new HashSet<>();
 
-    public Play(String name) {
+    public Film(String name) {
         this.name = name;
     }
 }
