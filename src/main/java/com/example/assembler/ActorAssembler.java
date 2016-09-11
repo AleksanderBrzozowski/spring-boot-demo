@@ -7,9 +7,8 @@ import org.springframework.hateoas.mvc.ResourceAssemblerSupport;
 import org.springframework.stereotype.Service;
 
 /**
- * Created by Aleksander on 2016-09-10.
+ * @author Aleksander
  */
-
 @Service
 public class ActorAssembler extends ResourceAssemblerSupport<Actor, ActorResource> {
 

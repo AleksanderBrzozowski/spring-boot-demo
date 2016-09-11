@@ -3,14 +3,14 @@ package com.example;
 import com.example.repository.ActorRepository;
 import com.example.repository.PlayRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.health.AbstractHealthIndicator;
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by Aleksander on 2016-09-11.
+ * @author Aleksander
  */
+
 @Component
 public class DataHealthIndicator implements HealthIndicator {
 
