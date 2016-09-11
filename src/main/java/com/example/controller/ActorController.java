@@ -4,6 +4,7 @@ import com.example.assembler.ActorAssembler;
 import com.example.entity.Actor;
 import com.example.repository.ActorRepository;
 import com.example.resource.ActorResource;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,12 +20,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/actors")
 @RestController
 @ExposesResourceFor(ActorResource.class)
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class ActorController {
 
-    @Autowired
-    ActorRepository actorRepository;
-    @Autowired
-    ActorAssembler actorAssembler;
+    private final ActorRepository actorRepository;
+    private final ActorAssembler actorAssembler;
 
     @RequestMapping
     public PagedResources<ActorResource> actors(Pageable pageable, PagedResourcesAssembler<Actor> pagedAssembler) {
