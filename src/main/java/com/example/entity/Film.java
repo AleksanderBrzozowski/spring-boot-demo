@@ -1,12 +1,11 @@
 package com.example.entity;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Aleksander
@@ -14,19 +13,16 @@ import java.util.Set;
 
 @Getter
 @NoArgsConstructor
-@EqualsAndHashCode(of = "id")
 @Entity
-public class Film {
+public class Film extends AbstractEntity<Integer>{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
     private String name;
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "film_actor",
-            joinColumns = @JoinColumn(name = "film_id"),
-            inverseJoinColumns = @JoinColumn(name = "actor_id"))
-    private Set<Actor> actors = new HashSet<>();
+    @ElementCollection
+    @JoinTable(name = "roles",
+            joinColumns = @JoinColumn(name = "role_id"),inverseJoinColumns = @JoinColumn(name = "actor_id"))
+    @MapKey
+    private Map<ActorRole, Actor> actors = new HashMap<>();
 
     public Film(String name) {
         this.name = name;
