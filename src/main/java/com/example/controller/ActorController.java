@@ -11,7 +11,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.hateoas.PagedResources;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -26,9 +28,15 @@ public class ActorController {
     private final ActorRepository actorRepository;
     private final ActorAssembler actorAssembler;
 
-    @RequestMapping
+    @RequestMapping(method = RequestMethod.GET)
     public PagedResources<ActorResource> actors(Pageable pageable, PagedResourcesAssembler<Actor> pagedAssembler) {
         final Page<Actor> actors = actorRepository.findAll(pageable);
         return pagedAssembler.toResource(actors, actorAssembler);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    public ActorResource actor(@PathVariable int id) {
+        final Actor actor = actorRepository.findOne(id);
+        return actorAssembler.toResource(actor);
     }
 }
