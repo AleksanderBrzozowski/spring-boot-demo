@@ -1,7 +1,7 @@
 package com.example.controller;
 
-import com.example.entity.Play;
-import com.example.repository.PlayRepository;
+import com.example.entity.Film;
+import com.example.repository.FilmRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,14 +13,14 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/plays")
-public class PlaysController {
+@RequestMapping("/films")
+public class FilmController {
 
     @Autowired
-    PlayRepository playRepository;
+    FilmRepository filmRepository;
 
     @RequestMapping
-    public List<Play> getPlays() {
-        return playRepository.findAll();
+    public List<Film> getPlays() {
+        return filmRepository.findAll();
     }
 }

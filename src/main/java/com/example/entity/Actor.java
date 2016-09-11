@@ -18,7 +18,7 @@ public class Actor extends AbstractEntity<Integer>{
 
     private String name;
     @ManyToMany(mappedBy = "actors")
-    private Set<Play> plays = new HashSet<>();
+    private Set<Film> films = new HashSet<>();
 
     public Actor(String name) {
         this.name = name;
