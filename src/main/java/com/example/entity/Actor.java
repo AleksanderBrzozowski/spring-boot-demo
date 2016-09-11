@@ -1,34 +1,28 @@
 package com.example.entity;
 
-import javax.persistence.CascadeType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.*;
+
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
  * Created by aleksander on 09.09.16.
  */
-public class Actor {
+@NoArgsConstructor
+@Entity
+@Getter
+public class Actor extends AbstractEntity<Integer>{
 
-    private int id;
     private String name;
-    private Set<Play> plays;
+    @ManyToMany(mappedBy = "actors")
+    private Set<Play> plays = new HashSet<>();
 
-    public Actor() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinColumn
-    public Set<Play> getPlays() {
-        return plays;
+    public Actor(String name) {
+        this.name = name;
     }
 }
