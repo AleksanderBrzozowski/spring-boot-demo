@@ -1,28 +1,26 @@
 package com.example.entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created by aleksander on 09.09.16.
+ * @author Aleksander
  */
-public class Actor {
+@NoArgsConstructor
+@Entity
+@Getter
+public class Actor extends AbstractEntity<Integer>{
 
-    private int id;
     private String name;
-    private Set<Play> plays;
+    @ManyToMany(mappedBy = "actors")
+    private Set<Play> plays = new HashSet<>();
 
-    public Actor() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Set<Play> getPlays() {
-        return plays;
+    public Actor(String name) {
+        this.name = name;
     }
 }
