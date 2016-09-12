@@ -9,5 +9,6 @@ import org.springframework.hateoas.config.EnableHypermediaSupport;
 
 @Configuration
 @EnableHypermediaSupport(type = EnableHypermediaSupport.HypermediaType.HAL)
+//Accept: application/hal+json
 public class RestConfiguration {
 }
