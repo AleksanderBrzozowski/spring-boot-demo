@@ -2,7 +2,7 @@ package com.example.assembler;
 
 import com.example.entity.ActorRole;
 import com.example.entity.Film;
-import com.example.resource.ActorRoleResource;
+import com.example.resource.FilmRoleResource;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -16,13 +16,13 @@ import java.util.Map;
 
 @Component
 @NoArgsConstructor
-public class ActorRolesAssembler implements ResourcesAssembler<Map<ActorRole, Film>, ActorRoleResource> {
+public class ActorRolesAssembler implements ResourcesAssembler<Map<ActorRole, Film>, FilmRoleResource> {
 
     @Override
-    public List<ActorRoleResource> toResources(Map<ActorRole, Film> actorRoleFilmMap) {
-        List<ActorRoleResource> actorRoles = new ArrayList<>();
+    public List<FilmRoleResource> toResources(Map<ActorRole, Film> actorRoleFilmMap) {
+        List<FilmRoleResource> actorRoles = new ArrayList<>();
         actorRoleFilmMap.forEach((actorRole, film) ->
-                actorRoles.add(new ActorRoleResource(film.getName(), actorRole.getNameInFilm(), actorRole.getRating().getStars())));
+                actorRoles.add(new FilmRoleResource(film.getName(), actorRole.getNameInFilm(), actorRole.getRating().getStars())));
         return actorRoles;
     }
 }

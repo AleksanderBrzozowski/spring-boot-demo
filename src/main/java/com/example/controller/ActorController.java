@@ -7,7 +7,7 @@ import com.example.entity.ActorRole;
 import com.example.entity.Film;
 import com.example.repository.ActorRepository;
 import com.example.resource.ActorResource;
-import com.example.resource.ActorRoleResource;
+import com.example.resource.FilmRoleResource;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -49,7 +49,7 @@ public class ActorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}/filmography")
-    public List<ActorRoleResource> filmography(@PathVariable int id) {
+    public List<FilmRoleResource> filmography(@PathVariable int id) {
         final Map<ActorRole, Film> actorRoleFilmMap = actorRepository.findOne(id).getFilms();
         return actorRolesAssembler.toResources(actorRoleFilmMap);
     }

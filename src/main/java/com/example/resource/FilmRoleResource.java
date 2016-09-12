@@ -12,7 +12,7 @@ import org.springframework.hateoas.core.Relation;
 @Getter
 @RequiredArgsConstructor
 @Relation(value = "role", collectionRelation = "filmography")
-public class ActorRoleResource extends ResourceSupport {
+public class FilmRoleResource extends ResourceSupport {
 
     private final String playName;
     private final String nameInFilm;

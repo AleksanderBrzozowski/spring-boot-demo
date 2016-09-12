@@ -3,14 +3,10 @@ package com.example.assembler;
 import com.example.controller.ActorController;
 import com.example.entity.Actor;
 import com.example.resource.ActorResource;
-import com.example.resource.ActorRoleResource;
-import com.example.resource.FilmResource;
+import com.example.resource.FilmRoleResource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.bind.RelaxedPropertyResolver;
-import org.springframework.hateoas.EntityLinks;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.RelProvider;
-import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.hateoas.mvc.ResourceAssemblerSupport;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +35,7 @@ public class ActorAssembler extends ResourceAssemblerSupport<Actor, ActorResourc
         final ActorResource actorResource = createResourceWithId(actor.getId(), actor);
         List<Link> links = asList(
                 linkTo(methodOn(ActorController.class).filmography(actor.getId()))
-                        .withRel(relProvider.getCollectionResourceRelFor(ActorRoleResource.class))
+                        .withRel(relProvider.getCollectionResourceRelFor(FilmRoleResource.class))
         );
         actorResource.add(links);
         return actorResource;
