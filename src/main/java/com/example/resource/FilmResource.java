@@ -3,6 +3,7 @@ package com.example.resource;
 import com.example.entity.Actor;
 import com.example.entity.ActorRole;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.hateoas.ResourceSupport;
 import org.springframework.hateoas.core.Relation;
 
@@ -12,20 +13,10 @@ import org.springframework.hateoas.core.Relation;
 
 @Getter
 @Relation(value = "film", collectionRelation = "films")
+@RequiredArgsConstructor
 public class FilmResource extends ResourceSupport{
 
-    private String name;
-    private ActorRole actorRole;
-    private Actor actor;
-
-    public FilmResource(String name, ActorRole actorRole, Actor actor) {
-        this.name = name;
-        this.actorRole = actorRole;
-        this.actor = actor;
-    }
-
-    public FilmResource(String name, ActorRole actorRole) {
-        this.name = name;
-        this.actorRole = actorRole;
-    }
+    private final String name;
+    private final ActorRole actorRole;
+    private final Actor actor;
 }
