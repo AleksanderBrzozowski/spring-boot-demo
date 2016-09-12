@@ -18,10 +18,10 @@ public class Film extends AbstractEntity<Integer>{
 
     private String name;
     @ManyToMany(cascade = CascadeType.ALL)
-    @ElementCollection
     @JoinTable(name = "roles",
-            joinColumns = @JoinColumn(name = "role_id"),inverseJoinColumns = @JoinColumn(name = "actor_id"))
-    @MapKey
+            joinColumns = @JoinColumn(name = "film_id"),
+            inverseJoinColumns = @JoinColumn(name = "actor_id"))
+    @MapKeyJoinColumn(name = "actor_role_id")
     private Map<ActorRole, Actor> actors = new HashMap<>();
 
     public Film(String name) {
