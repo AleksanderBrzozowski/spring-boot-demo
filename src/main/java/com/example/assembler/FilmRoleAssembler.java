@@ -16,7 +16,7 @@ import java.util.Map;
 
 @Component
 @NoArgsConstructor
-public class ActorRolesAssembler implements ResourcesAssembler<Map<ActorRole, Film>, FilmRoleResource> {
+public class FilmRoleAssembler implements ResourcesAssembler<Map<ActorRole, Film>, FilmRoleResource> {
 
     @Override
     public List<FilmRoleResource> toResources(Map<ActorRole, Film> actorRoleFilmMap) {

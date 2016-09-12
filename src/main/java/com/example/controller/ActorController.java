@@ -1,7 +1,7 @@
 package com.example.controller;
 
 import com.example.assembler.ActorAssembler;
-import com.example.assembler.ActorRolesAssembler;
+import com.example.assembler.FilmRoleAssembler;
 import com.example.entity.Actor;
 import com.example.entity.ActorRole;
 import com.example.entity.Film;
@@ -34,7 +34,7 @@ public class ActorController {
 
     private final ActorRepository actorRepository;
     private final ActorAssembler actorAssembler;
-    private final ActorRolesAssembler actorRolesAssembler;
+    private final FilmRoleAssembler filmRoleAssembler;
 
     @RequestMapping(method = RequestMethod.GET)
     public PagedResources<ActorResource> actors(Pageable pageable, PagedResourcesAssembler<Actor> pagedAssembler) {
@@ -51,6 +51,6 @@ public class ActorController {
     @RequestMapping(method = RequestMethod.GET, path = "/{id}/filmography")
     public List<FilmRoleResource> filmography(@PathVariable int id) {
         final Map<ActorRole, Film> actorRoleFilmMap = actorRepository.findOne(id).getFilms();
-        return actorRolesAssembler.toResources(actorRoleFilmMap);
+        return filmRoleAssembler.toResources(actorRoleFilmMap);
     }
 }
