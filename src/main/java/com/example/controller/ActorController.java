@@ -1,9 +1,13 @@
 package com.example.controller;
 
 import com.example.assembler.ActorAssembler;
+import com.example.assembler.ActorRolesAssembler;
 import com.example.entity.Actor;
+import com.example.entity.ActorRole;
+import com.example.entity.Film;
 import com.example.repository.ActorRepository;
 import com.example.resource.ActorResource;
+import com.example.resource.ActorRoleResource;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,6 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * @author Aleksander
  */
@@ -27,6 +34,7 @@ public class ActorController {
 
     private final ActorRepository actorRepository;
     private final ActorAssembler actorAssembler;
+    private final ActorRolesAssembler actorRolesAssembler;
 
     @RequestMapping(method = RequestMethod.GET)
     public PagedResources<ActorResource> actors(Pageable pageable, PagedResourcesAssembler<Actor> pagedAssembler) {
@@ -38,5 +46,11 @@ public class ActorController {
     public ActorResource actor(@PathVariable int id) {
         final Actor actor = actorRepository.findOne(id);
         return actorAssembler.toResource(actor);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}/filmography")
+    public List<ActorRoleResource> filmography(@PathVariable int id) {
+        final Map<ActorRole, Film> actorRoleFilmMap = actorRepository.findOne(id).getFilms();
+        return actorRolesAssembler.toResources(actorRoleFilmMap);
     }
 }
