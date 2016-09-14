@@ -32,9 +32,13 @@ public class SampleDataLoader implements ApplicationListener<ContextRefreshedEve
         Actor actor = actorRepository.save(new Actor("Cezary Pazura"));
         Film film = filmRepository.save(new Film("Kiler"));
         Rating rating = ratingRepository.save(new Rating());
-        ActorRole actorRole = new ActorRole("Jerzy Kiler", rating);
-        actorRole = actorRoleRepository.save(actorRole);
+        ActorRole actorRole = actorRoleRepository.save(new ActorRole("Jerzy Kiler", rating));
         film.getActors().put(actorRole, actor);
+
+        Actor actor1 = actorRepository.save(new Actor("Jerzy Stuhr"));
+        Rating rating1 = ratingRepository.save(new Rating());
+        ActorRole actorRole1 = actorRoleRepository.save(new ActorRole("Komisarz Jerzy Ryba", rating1));
+        film.getActors().put(actorRole1, actor1);
         filmRepository.save(film);
     }
 }
