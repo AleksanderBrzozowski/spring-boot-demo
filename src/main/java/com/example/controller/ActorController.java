@@ -7,6 +7,7 @@ import com.example.entity.ActorRole;
 import com.example.entity.Film;
 import com.example.repository.ActorRepository;
 import com.example.resource.ActorResource;
+import com.example.resource.FilmResource;
 import com.example.resource.FilmRoleResource;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author Aleksander
@@ -50,7 +53,8 @@ public class ActorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}/filmography")
     public List<FilmRoleResource> filmography(@PathVariable int id) {
-        final Map<ActorRole, Film> actorRoleFilmMap = actorRepository.findOne(id).getFilms();
-        return filmRoleAssembler.toResources(actorRoleFilmMap);
+        return actorRepository.findOne(id).getFilms().entrySet().stream()
+                .map(entry -> filmRoleAssembler.toResource(entry.getKey(), entry.getValue()))
+                .collect(Collectors.toList());
     }
 }
