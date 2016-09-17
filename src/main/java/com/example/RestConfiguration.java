@@ -1,14 +1,13 @@
 package com.example;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.hateoas.config.EnableHypermediaSupport;
+import org.springframework.hateoas.config.EnableEntityLinks;
 
 /**
  * @author Aleksander
  */
 
 @Configuration
-@EnableHypermediaSupport(type = EnableHypermediaSupport.HypermediaType.HAL)
-//Accept: application/hal+json
+@EnableEntityLinks
 public class RestConfiguration {
 }
