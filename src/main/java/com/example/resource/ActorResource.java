@@ -5,6 +5,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.hateoas.ResourceSupport;
 import org.springframework.hateoas.core.Relation;
 
+import java.time.LocalDate;
+
 
 /**
  * @author Aleksander
@@ -16,5 +18,6 @@ import org.springframework.hateoas.core.Relation;
 public class ActorResource extends ResourceSupport{
 
     private final String name;
+    private final LocalDate dateOfBirth;
 
 }

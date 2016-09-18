@@ -42,7 +42,7 @@ public class ActorAssembler extends ResourceAssemblerSupport<Actor, ActorResourc
     }
 
     @Override
-    protected ActorResource instantiateResource(Actor entity) {
-        return new ActorResource(entity.getName());
+    protected ActorResource instantiateResource(Actor actor) {
+        return new ActorResource(actor.getName(), actor.getDateOfBirth());
     }
 }
