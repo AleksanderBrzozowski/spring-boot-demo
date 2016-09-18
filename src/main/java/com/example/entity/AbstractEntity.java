@@ -21,7 +21,7 @@ import java.io.Serializable;
 public class AbstractEntity<T extends Serializable> implements Identifiable<T> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private final T id;
 
     protected AbstractEntity() {

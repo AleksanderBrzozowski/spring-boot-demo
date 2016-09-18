@@ -13,8 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.Locale;
 
 /**
  * @author Aleksander
@@ -30,9 +32,10 @@ public class SampleDataLoader implements ApplicationListener<ContextRefreshedEve
     private final RatingRepository ratingRepository;
 
     @Override
+    @Transactional
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         Actor actor = actorRepository.save(new Actor("Cezary Pazura", LocalDate.of(1962, 6, 13)));
-        Film film = filmRepository.save(new Film("Kiler"));
+        Film film = filmRepository.save(new Film("Kiler", LocalDate.of(1997, 11, 17), new Locale("pl","PL")));
         Rating rating = ratingRepository.save(new Rating());
         ActorRole actorRole = actorRoleRepository.save(new ActorRole("Jerzy Kiler", rating));
         film.getActors().put(actorRole, actor);
@@ -41,6 +44,5 @@ public class SampleDataLoader implements ApplicationListener<ContextRefreshedEve
         Rating rating1 = ratingRepository.save(new Rating());
         ActorRole actorRole1 = actorRoleRepository.save(new ActorRole("Komisarz Jerzy Ryba", rating1));
         film.getActors().put(actorRole1, actor1);
-        filmRepository.save(film);
     }
 }
