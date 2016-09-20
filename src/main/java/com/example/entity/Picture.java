@@ -17,7 +17,6 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 @Entity
-@Setter
 public class Picture {
 
     @Id
