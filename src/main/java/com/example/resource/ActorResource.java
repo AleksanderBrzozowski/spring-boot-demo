@@ -20,5 +20,6 @@ public class ActorResource extends ResourceSupport{
     private final String name;
     private final LocalDate dateOfBirth;
     private final String country;
+    private final String mainPicture;
 
 }
