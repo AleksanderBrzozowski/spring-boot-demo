@@ -23,7 +23,8 @@ public class FilmController {
 
     @RequestMapping
     public List<Film> getPlays() {
-        return filmRepository.findAll();
+        final List<Film> films = filmRepository.findAll();
+        return films;
     }
 
     @RequestMapping("/{id}")

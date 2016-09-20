@@ -1,8 +1,11 @@
 package com.example.assembler;
 
+import com.example.controller.ActorController;
 import com.example.controller.FilmController;
+import com.example.entity.Actor;
 import com.example.entity.ActorRole;
 import com.example.entity.Film;
+import com.example.resource.ActorResource;
 import com.example.resource.FilmResource;
 import com.example.resource.FilmRoleResource;
 import lombok.RequiredArgsConstructor;
@@ -19,15 +22,16 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 @Component
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class FilmRoleAssembler implements ResourceAssembler<ActorRole, Film, FilmRoleResource>{
+public class ActorRoleAssembler {
 
     private final RelProvider relProvider;
 
-    @Override
-    public FilmRoleResource toResource(ActorRole role, Film film) {
-        final FilmRoleResource resource = new FilmRoleResource(film.getName(), role.getNameInFilm(), role.getRating().getStars());
+    public FilmRoleResource toResource(ActorRole role, Film film, Actor actor) {
+        final FilmRoleResource resource = new FilmRoleResource(film.getName(), role.getNameInFilm(), role.getRating().getStars(), actor.getName());
         resource.add(linkTo(methodOn(FilmController.class).film(film.getId()))
                 .withRel(relProvider.getItemResourceRelFor(FilmResource.class)));
+        resource.add(linkTo(methodOn(ActorController.class).actor(actor.getId()))
+                .withRel(relProvider.getItemResourceRelFor(ActorResource.class)));
         return resource;
     }
 }
