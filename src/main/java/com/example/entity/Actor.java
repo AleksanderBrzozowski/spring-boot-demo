@@ -20,7 +20,7 @@ public class Actor extends AbstractEntity<Integer>{
     private String name;
     private LocalDate dateOfBirth;
     private Locale country;
-    private String picture;
+    private String mainPicture;
     @ManyToMany(mappedBy = "actorsSet")
     private Set<Picture> pictures = new HashSet<>();
 
@@ -28,9 +28,10 @@ public class Actor extends AbstractEntity<Integer>{
     @MapKeyJoinColumn(name = "actor_role_id")
     private Map<ActorRole, Film> films = new HashMap<>();
 
-    public Actor(String name, LocalDate dateOfBirth, Locale country) {
+    public Actor(String name, LocalDate dateOfBirth, Locale country, String mainPicture) {
         this.dateOfBirth = dateOfBirth;
         this.name = name;
         this.country = country;
+        this.mainPicture = mainPicture;
     }
 }
