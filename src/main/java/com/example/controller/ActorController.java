@@ -63,6 +63,6 @@ public class ActorController {
     @RequestMapping(method = RequestMethod.GET, path = "/{id}/pictures")
     public PagedResources<PictureResource> pictures(@PathVariable int id, Pageable pageable, PagedResourcesAssembler<Picture> pagedAssembler) {
         final List<Picture> pictures = new ArrayList<>(actorRepository.findOne(id).getPictures());
-        return pagedAssembler.toResource(new PageImpl<>(pictures), pictureAssembler);
+        return pagedAssembler.toResource(new PageImpl<>(pictures, pageable, pictures.size()), pictureAssembler);
     }
 }
