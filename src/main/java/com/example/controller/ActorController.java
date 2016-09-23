@@ -12,16 +12,17 @@ import com.example.resource.PictureResource;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.hateoas.PagedResources;
-import org.springframework.hateoas.RelProvider;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -60,8 +61,8 @@ public class ActorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}/pictures")
-    public List<PictureResource> pictures(@PathVariable int id) {
-        final Actor actor = actorRepository.findOne(id);
-        return actor.getPictures().stream().map(pictureAssembler::toResource).collect(Collectors.toList());
+    public PagedResources<PictureResource> pictures(@PathVariable int id, Pageable pageable, PagedResourcesAssembler<Picture> pagedAssembler) {
+        final List<Picture> pictures = new ArrayList<>(actorRepository.findOne(id).getPictures());
+        return pagedAssembler.toResource(new PageImpl<>(pictures), pictureAssembler);
     }
 }
