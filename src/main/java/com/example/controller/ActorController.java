@@ -2,10 +2,13 @@ package com.example.controller;
 
 import com.example.assembler.ActorAssembler;
 import com.example.assembler.ActorRoleAssembler;
+import com.example.assembler.PictureAssembler;
 import com.example.entity.Actor;
+import com.example.entity.Picture;
 import com.example.repository.ActorRepository;
 import com.example.resource.ActorResource;
 import com.example.resource.FilmRoleResource;
+import com.example.resource.PictureResource;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,6 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.hateoas.PagedResources;
+import org.springframework.hateoas.RelProvider;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,7 +28,7 @@ import java.util.stream.Collectors;
 /**
  * @author Aleksander
  */
-@RequestMapping("/actors")
+@RequestMapping(value = "/actors")
 @RestController
 @ExposesResourceFor(ActorResource.class)
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
@@ -33,6 +37,7 @@ public class ActorController {
     private final ActorRepository actorRepository;
     private final ActorAssembler actorAssembler;
     private final ActorRoleAssembler actorRoleAssembler;
+    private final PictureAssembler pictureAssembler;
 
     @RequestMapping(method = RequestMethod.GET)
     public PagedResources<ActorResource> actors(Pageable pageable, PagedResourcesAssembler<Actor> pagedAssembler) {
@@ -52,5 +57,11 @@ public class ActorController {
         return actor.getFilms().entrySet().stream()
                 .map(entry -> actorRoleAssembler.toResource(entry.getKey(), entry.getValue(), actor))
                 .collect(Collectors.toList());
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}/pictures")
+    public List<PictureResource> pictures(@PathVariable int id) {
+        final Actor actor = actorRepository.findOne(id);
+        return actor.getPictures().stream().map(pictureAssembler::toResource).collect(Collectors.toList());
     }
 }

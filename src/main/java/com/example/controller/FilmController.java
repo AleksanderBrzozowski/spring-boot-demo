@@ -4,6 +4,7 @@ import com.example.entity.Film;
 import com.example.repository.FilmRepository;
 import com.example.resource.FilmResource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/films")
+@ExposesResourceFor(FilmResource.class)
 public class FilmController {
 
     @Autowired
