@@ -3,7 +3,7 @@ package com.example.entity;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+import org.springframework.hateoas.Identifiable;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -17,7 +17,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 @Entity
-public class Picture {
+public class Picture implements Identifiable<String>{
 
     @Id
     private String url;
@@ -30,5 +30,10 @@ public class Picture {
     public Picture(String url, Film film) {
         this.url = url;
         this.film = film;
+    }
+
+    @Override
+    public String getId() {
+        return url;
     }
 }

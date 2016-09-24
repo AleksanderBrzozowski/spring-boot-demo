@@ -23,7 +23,7 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
  */
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class ActorAssembler extends MyResourceAssemblerSupport<Actor, ActorResource>{
+public class ActorAssembler extends AbstractAssembler<Actor, ActorResource> {
 
     private final RelProvider relProvider;
     private final EntityLinks entityLinks;
@@ -39,6 +39,11 @@ public class ActorAssembler extends MyResourceAssemblerSupport<Actor, ActorResou
         );
         actorResource.add(links);
         return actorResource;
+    }
+
+    @Override
+    public Class<ActorResource> resourceClass() {
+        return ActorResource.class;
     }
 
     @Override

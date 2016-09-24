@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
  */
 @RequestMapping(value = "/actors")
 @RestController
-@ExposesResourceFor(ActorResource.class)
+@ExposesResourceFor(Actor.class)
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class ActorController {
 

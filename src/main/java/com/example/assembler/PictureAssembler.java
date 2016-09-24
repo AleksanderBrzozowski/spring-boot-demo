@@ -1,10 +1,8 @@
 package com.example.assembler;
 
 import com.example.controller.PictureController;
-import com.example.entity.Actor;
 import com.example.entity.Picture;
 import com.example.resource.ActorResource;
-import com.example.resource.FilmResource;
 import com.example.resource.PictureResource;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +11,6 @@ import org.springframework.hateoas.Link;
 import org.springframework.hateoas.RelProvider;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static java.util.Arrays.asList;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
@@ -26,11 +20,16 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @Service
-public class PictureAssembler extends MyResourceAssemblerSupport<Picture, PictureResource> {
+public class PictureAssembler extends AbstractAssembler<Picture, PictureResource> {
 
     private final EntityLinks entityLinks;
     private final RelProvider relProvider;
     private final ActorAssembler actorAssembler;
+
+    @Override
+    public Class<PictureResource> resourceClass() {
+        return PictureResource.class;
+    }
 
     @Override
     public Link linkToSingleResource(Picture entity) {

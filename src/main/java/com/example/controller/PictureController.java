@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
  * @author aleksander
  */
 
-@ExposesResourceFor(PictureResource.class)
+@ExposesResourceFor(Picture.class)
 @RestController
 @RequestMapping("/pictures")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
