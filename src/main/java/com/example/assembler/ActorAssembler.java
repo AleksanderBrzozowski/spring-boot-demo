@@ -7,7 +7,6 @@ import com.example.resource.FilmRoleResource;
 import com.example.resource.PictureResource;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.EntityLinks;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.RelProvider;
 import org.springframework.stereotype.Service;
@@ -26,7 +25,6 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 public class ActorAssembler extends AbstractAssembler<Actor, ActorResource> {
 
     private final RelProvider relProvider;
-    private final EntityLinks entityLinks;
 
     @Override
     public ActorResource toResource(Actor actor) {
@@ -44,12 +42,6 @@ public class ActorAssembler extends AbstractAssembler<Actor, ActorResource> {
     @Override
     public Class<ActorResource> resourceClass() {
         return ActorResource.class;
-    }
-
-    @Override
-    public Link linkToSingleResource(Actor entity) {
-        return entityLinks.linkToSingleResource(ActorResource.class, entity.getId())
-                .withRel(relProvider.getItemResourceRelFor(ActorResource.class));
     }
 
     @Override
