@@ -3,7 +3,7 @@ package com.example.assembler;
 import com.example.controller.ActorController;
 import com.example.entity.Actor;
 import com.example.resource.ActorResource;
-import com.example.resource.FilmRoleResource;
+import com.example.resource.ActorRoleResource;
 import com.example.resource.PictureResource;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +30,8 @@ public class ActorAssembler extends AbstractAssembler<Actor, ActorResource> {
     public ActorResource toResource(Actor actor) {
         final ActorResource actorResource = createResourceWithId(actor);
         List<Link> links = asList(
-                linkTo(methodOn(ActorController.class).filmography(actor.getId()))
-                        .withRel(relProvider.getCollectionResourceRelFor(FilmRoleResource.class)),
+                linkTo(methodOn(ActorController.class).roles(actor.getId(), null, null))
+                        .withRel(relProvider.getCollectionResourceRelFor(ActorRoleResource.class)),
                 linkTo(methodOn(ActorController.class).pictures(actor.getId(), null, null))
                         .withRel(relProvider.getCollectionResourceRelFor(PictureResource.class))
         );

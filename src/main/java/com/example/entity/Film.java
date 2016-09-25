@@ -3,9 +3,13 @@ package com.example.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Locale;
+import java.util.Set;
 
 /**
  * @author Aleksander
@@ -20,10 +24,8 @@ public class Film extends AbstractEntity<Integer>{
     private LocalDate releaseDate;
     private Locale country;
     private String mainPicture;
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "roles_map", joinColumns = @JoinColumn(name = "film_id"), inverseJoinColumns = @JoinColumn(name = "actor_id"))
-    @MapKeyJoinColumn(name = "actor_role_id")
-    private Map<ActorRole, Actor> actors = new HashMap<>();
+    @OneToMany(mappedBy = "film")
+    private Set<ActorRole> roles = new HashSet<>();
     @OneToMany(mappedBy = "film", cascade = CascadeType.ALL)
     private Set<Picture> pictures = new HashSet<>();
 

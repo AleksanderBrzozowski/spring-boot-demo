@@ -6,16 +6,16 @@ import org.springframework.hateoas.ResourceSupport;
 import org.springframework.hateoas.core.Relation;
 
 /**
- * Created by aleksander on 12.09.16.
+ * @author Aleksander
  */
 
 @Getter
 @RequiredArgsConstructor
 @Relation(value = "role", collectionRelation = "roles")
-public class FilmRoleResource extends ResourceSupport {
+public class ActorRoleResource extends ResourceSupport {
 
-    private final String playName;
     private final String nameInFilm;
     private final float stars;
-    private final String actorName;
+    private final int votes;
+    private final String picture;
 }

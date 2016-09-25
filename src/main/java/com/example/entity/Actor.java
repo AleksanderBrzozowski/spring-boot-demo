@@ -5,9 +5,11 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
-import javax.persistence.MapKeyJoinColumn;
+import javax.persistence.OneToMany;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Locale;
+import java.util.Set;
 
 /**
  * @author Aleksander
@@ -23,10 +25,8 @@ public class Actor extends AbstractEntity<Integer>{
     private String mainPicture;
     @ManyToMany(mappedBy = "actorsSet")
     private Set<Picture> pictures = new HashSet<>();
-
-    @ManyToMany(mappedBy = "actors")
-    @MapKeyJoinColumn(name = "actor_role_id")
-    private Map<ActorRole, Film> films = new HashMap<>();
+    @OneToMany(mappedBy = "actor")
+    private Set<ActorRole> roles = new HashSet<>();
 
     public Actor(String name, LocalDate dateOfBirth, Locale country, String mainPicture) {
         this.dateOfBirth = dateOfBirth;
