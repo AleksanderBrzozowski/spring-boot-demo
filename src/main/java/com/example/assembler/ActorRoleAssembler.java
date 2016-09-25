@@ -20,6 +20,7 @@ import static java.util.Arrays.asList;
 public class ActorRoleAssembler extends AbstractAssembler<ActorRole, ActorRoleResource>{
 
     private final ActorAssembler actorAssembler;
+    private final FilmAssembler filmAssembler;
 
     @Override
     public Class<ActorRoleResource> resourceClass() {
@@ -35,7 +36,8 @@ public class ActorRoleAssembler extends AbstractAssembler<ActorRole, ActorRoleRe
     public ActorRoleResource toResource(ActorRole actorRole) {
         final ActorRoleResource resource = createResourceWithId(actorRole);
         List<Link> links = asList(
-                actorAssembler.linkToSingleResource(actorRole.getActor())
+                actorAssembler.linkToSingleResource(actorRole.getActor()),
+                filmAssembler.linkToSingleResource(actorRole.getFilm())
         );
         resource.add(links);
         return resource;
