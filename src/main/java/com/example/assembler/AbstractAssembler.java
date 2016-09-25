@@ -1,19 +1,19 @@
 package com.example.assembler;
 
 import lombok.NonNull;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.*;
 
 /**
  * @author aleksander
  */
+
 abstract class AbstractAssembler<T extends Identifiable, S extends ResourceSupport> implements ResourceAssembler<T, S>{
 
-    @SuppressWarnings("SpringAutowiredFieldsWarningInspection")
-    @Autowired
+    @Setter(onMethod = @__(@Autowired))
     private @NonNull RelProvider relProvider;
-    @SuppressWarnings("SpringAutowiredFieldsWarningInspection")
-    @Autowired
+    @Setter(onMethod = @__(@Autowired))
     private @NonNull EntityLinks entityLinks;
 
     S createResourceWithId(T entity) {
