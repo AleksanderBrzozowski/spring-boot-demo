@@ -22,8 +22,6 @@ abstract class AbstractAssembler<T extends Identifiable, S extends ResourceSuppo
         return resource;
     }
 
-    public abstract Class<S> resourceClass();
-
     public Link linkToSingleResource(T entity){
         return getEntityLink(entity)
                 .withRel(relProvider.getItemResourceRelFor(resourceClass()));
@@ -34,4 +32,6 @@ abstract class AbstractAssembler<T extends Identifiable, S extends ResourceSuppo
     }
 
     public abstract S instantiateResource(T entity);
+
+    public abstract Class<S> resourceClass();
 }
