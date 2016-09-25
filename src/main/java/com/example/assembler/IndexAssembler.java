@@ -1,7 +1,9 @@
 package com.example.assembler;
 
 import com.example.entity.Actor;
+import com.example.entity.Film;
 import com.example.resource.ActorResource;
+import com.example.resource.FilmResource;
 import com.example.resource.IndexResource;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +29,8 @@ public class IndexAssembler {
 
     public IndexResource buildIndex() {
         final List<Link> links = asList(
-                entityLinks.linkToCollectionResource(Actor.class).withRel(relProvider.getCollectionResourceRelFor(ActorResource.class))
+                entityLinks.linkToCollectionResource(Actor.class).withRel(relProvider.getCollectionResourceRelFor(ActorResource.class)),
+                entityLinks.linkToCollectionResource(Film.class).withRel(relProvider.getCollectionResourceRelFor(FilmResource.class))
         );
         final IndexResource resource = new IndexResource("Film API", "A simple film api");
         resource.add(links);
