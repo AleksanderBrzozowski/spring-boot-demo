@@ -36,10 +36,10 @@ import java.util.List;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class ActorController {
 
-    private @NonNull final ActorRepository actorRepository;
-    private @NonNull final ActorAssembler actorAssembler;
-    private @NonNull final ActorRoleAssembler actorRoleAssembler;
-    private @NonNull final PictureAssembler pictureAssembler;
+    @NonNull private final ActorRepository actorRepository;
+    @NonNull private final ActorAssembler actorAssembler;
+    @NonNull private final ActorRoleAssembler actorRoleAssembler;
+    @NonNull private final PictureAssembler pictureAssembler;
 
     @RequestMapping(method = RequestMethod.GET)
     public PagedResources<ActorResource> actors(Pageable pageable, PagedResourcesAssembler<Actor> assembler) {

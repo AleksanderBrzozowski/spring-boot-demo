@@ -25,7 +25,7 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class ActorAssembler extends AbstractAssembler<Actor, ActorResource> {
 
-    private @NonNull final RelProvider relProvider;
+    @NonNull private final RelProvider relProvider;
 
     @Override
     public ActorResource toResource(Actor actor) {

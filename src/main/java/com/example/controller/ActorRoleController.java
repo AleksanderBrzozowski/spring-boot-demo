@@ -23,8 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class ActorRoleController {
 
-    private @NonNull final ActorRoleAssembler actorRoleAssembler;
-    private @NonNull final ActorRoleRepository actorRoleRepository;
+    @NonNull private final ActorRoleAssembler actorRoleAssembler;
+    @NonNull private final ActorRoleRepository actorRoleRepository;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ActorRoleResource actorRole(@PathVariable int id) {

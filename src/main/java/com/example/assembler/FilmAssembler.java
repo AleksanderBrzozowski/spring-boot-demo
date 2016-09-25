@@ -26,7 +26,7 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 @Service
 public class FilmAssembler  extends AbstractAssembler<Film, FilmResource>{
 
-    private @NonNull final RelProvider relProvider;
+    @NonNull private final RelProvider relProvider;
 
     @Override
     public FilmResource instantiateResource(Film entity) {

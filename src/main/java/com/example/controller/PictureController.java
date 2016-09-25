@@ -36,10 +36,10 @@ import java.util.List;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class PictureController {
 
-    private @NonNull final PictureRepository pictureRepository;
-    private @NonNull final PictureAssembler pictureAssembler;
-    private @NonNull final ActorAssembler actorAssembler;
-    private @NonNull final FilmAssembler filmAssembler;
+    @NonNull private final PictureRepository pictureRepository;
+    @NonNull private final PictureAssembler pictureAssembler;
+    @NonNull private final ActorAssembler actorAssembler;
+    @NonNull private final FilmAssembler filmAssembler;
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     public PictureResource picture(@PathVariable String id) {

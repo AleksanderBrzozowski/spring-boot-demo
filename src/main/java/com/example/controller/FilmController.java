@@ -37,10 +37,10 @@ import java.util.List;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class FilmController {
 
-    private @NonNull final FilmRepository filmRepository;
-    private @NonNull final FilmAssembler filmAssembler;
-    private @NonNull final PictureAssembler pictureAssembler;
-    private @NonNull final ActorRoleAssembler actorRoleAssembler;
+    @NonNull private final FilmRepository filmRepository;
+    @NonNull private final FilmAssembler filmAssembler;
+    @NonNull private final PictureAssembler pictureAssembler;
+    @NonNull private final ActorRoleAssembler actorRoleAssembler;
 
     @RequestMapping(method = RequestMethod.GET)
     public PagedResources<FilmResource> films(Pageable pageable, PagedResourcesAssembler<Film> assembler) {

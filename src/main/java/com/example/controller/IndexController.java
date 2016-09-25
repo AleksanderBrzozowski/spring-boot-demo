@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class IndexController {
 
-    private @NonNull final IndexAssembler indexAssembler;
+    @NonNull private final IndexAssembler indexAssembler;
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<IndexResource> index() {

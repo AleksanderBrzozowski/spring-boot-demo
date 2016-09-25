@@ -20,8 +20,8 @@ import static java.util.Arrays.asList;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class ActorRoleAssembler extends AbstractAssembler<ActorRole, ActorRoleResource>{
 
-    private @NonNull final ActorAssembler actorAssembler;
-    private @NonNull final FilmAssembler filmAssembler;
+    @NonNull private final ActorAssembler actorAssembler;
+    @NonNull private final FilmAssembler filmAssembler;
 
     @Override
     public Class<ActorRoleResource> resourceClass() {

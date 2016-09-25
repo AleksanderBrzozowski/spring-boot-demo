@@ -16,11 +16,11 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class DataHealthIndicator implements HealthIndicator {
 
-    private @NonNull final ActorRepository actorRepository;
-    private @NonNull final FilmRepository filmRepository;
-    private @NonNull final ActorRoleRepository actorRoleRepository;
-    private @NonNull final PictureRepository pictureRepository;
-    private @NonNull final RatingRepository ratingRepository;
+    @NonNull private final ActorRepository actorRepository;
+    @NonNull private final FilmRepository filmRepository;
+    @NonNull private final ActorRoleRepository actorRoleRepository;
+    @NonNull private final PictureRepository pictureRepository;
+    @NonNull private final RatingRepository ratingRepository;
 
     @Override
     public Health health() {

@@ -26,7 +26,7 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 @Service
 public class PictureAssembler extends AbstractAssembler<Picture, PictureResource> {
 
-    private @NonNull final RelProvider relProvider;
+    @NonNull private final RelProvider relProvider;
 
     @Override
     public Class<PictureResource> resourceClass() {

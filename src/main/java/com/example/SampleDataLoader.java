@@ -23,11 +23,11 @@ import static java.util.Arrays.asList;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class SampleDataLoader implements ApplicationListener<ContextRefreshedEvent>{
 
-    private @NonNull final ActorRepository actorRepository;
-    private @NonNull final FilmRepository filmRepository;
-    private @NonNull final ActorRoleRepository actorRoleRepository;
-    private @NonNull final RatingRepository ratingRepository;
-    private @NonNull final PictureRepository pictureRepository;
+    @NonNull private final ActorRepository actorRepository;
+    @NonNull private final FilmRepository filmRepository;
+    @NonNull private final ActorRoleRepository actorRoleRepository;
+    @NonNull private final RatingRepository ratingRepository;
+    @NonNull private final PictureRepository pictureRepository;
 
     @Override
     @Transactional

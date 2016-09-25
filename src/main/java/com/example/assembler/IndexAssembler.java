@@ -25,8 +25,8 @@ import static java.util.Arrays.asList;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class IndexAssembler {
 
-    private @NonNull final RelProvider relProvider;
-    private @NonNull final EntityLinks entityLinks;
+    @NonNull private final RelProvider relProvider;
+    @NonNull private final EntityLinks entityLinks;
 
     public IndexResource buildIndex() {
         final List<Link> links = asList(
