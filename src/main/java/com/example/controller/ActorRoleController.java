@@ -6,7 +6,6 @@ import com.example.repository.ActorRoleRepository;
 import com.example.resource.ActorRoleResource;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/roles")
 @ExposesResourceFor(ActorRole.class)
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor
 public class ActorRoleController {
 
     @NonNull private final ActorRoleAssembler actorRoleAssembler;

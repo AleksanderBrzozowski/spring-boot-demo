@@ -7,7 +7,6 @@ import com.example.resource.ActorRoleResource;
 import com.example.resource.PictureResource;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.RelProvider;
 import org.springframework.stereotype.Service;
@@ -22,7 +21,7 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
  * @author Aleksander
  */
 @Service
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor
 public class ActorAssembler extends AbstractAssembler<Actor, ActorResource> {
 
     @NonNull private final RelProvider relProvider;

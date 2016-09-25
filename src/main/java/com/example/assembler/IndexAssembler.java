@@ -7,7 +7,6 @@ import com.example.resource.FilmResource;
 import com.example.resource.IndexResource;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityLinks;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.RelProvider;
@@ -22,7 +21,7 @@ import static java.util.Arrays.asList;
  */
 
 @Service
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor
 public class IndexAssembler {
 
     @NonNull private final RelProvider relProvider;

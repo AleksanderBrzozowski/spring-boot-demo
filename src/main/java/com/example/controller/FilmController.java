@@ -12,7 +12,6 @@ import com.example.resource.FilmResource;
 import com.example.resource.PictureResource;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -34,7 +33,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/films")
 @ExposesResourceFor(Film.class)
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor
 public class FilmController {
 
     @NonNull private final FilmRepository filmRepository;

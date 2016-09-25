@@ -4,7 +4,6 @@ import com.example.entity.ActorRole;
 import com.example.resource.ActorRoleResource;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +16,7 @@ import static java.util.Arrays.asList;
  */
 
 @Component
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor
 public class ActorRoleAssembler extends AbstractAssembler<ActorRole, ActorRoleResource>{
 
     @NonNull private final ActorAssembler actorAssembler;
