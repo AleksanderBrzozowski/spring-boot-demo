@@ -10,6 +10,7 @@ import com.example.repository.FilmRepository;
 import com.example.resource.ActorRoleResource;
 import com.example.resource.FilmResource;
 import com.example.resource.PictureResource;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -36,10 +37,10 @@ import java.util.List;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class FilmController {
 
-    private final FilmRepository filmRepository;
-    private final FilmAssembler filmAssembler;
-    private final PictureAssembler pictureAssembler;
-    private final ActorRoleAssembler actorRoleAssembler;
+    private @NonNull final FilmRepository filmRepository;
+    private @NonNull final FilmAssembler filmAssembler;
+    private @NonNull final PictureAssembler pictureAssembler;
+    private @NonNull final ActorRoleAssembler actorRoleAssembler;
 
     @RequestMapping(method = RequestMethod.GET)
     public PagedResources<FilmResource> films(Pageable pageable, PagedResourcesAssembler<Film> assembler) {

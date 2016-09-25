@@ -5,6 +5,7 @@ import com.example.entity.Film;
 import com.example.resource.ActorResource;
 import com.example.resource.FilmResource;
 import com.example.resource.IndexResource;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityLinks;
@@ -24,8 +25,8 @@ import static java.util.Arrays.asList;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class IndexAssembler {
 
-    private final RelProvider relProvider;
-    private final EntityLinks entityLinks;
+    private @NonNull final RelProvider relProvider;
+    private @NonNull final EntityLinks entityLinks;
 
     public IndexResource buildIndex() {
         final List<Link> links = asList(

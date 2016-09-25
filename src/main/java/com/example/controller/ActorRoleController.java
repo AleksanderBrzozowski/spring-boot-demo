@@ -4,6 +4,7 @@ import com.example.assembler.ActorRoleAssembler;
 import com.example.entity.ActorRole;
 import com.example.repository.ActorRoleRepository;
 import com.example.resource.ActorRoleResource;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.ExposesResourceFor;
@@ -22,8 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class ActorRoleController {
 
-    private final ActorRoleAssembler actorRoleAssembler;
-    private final ActorRoleRepository actorRoleRepository;
+    private @NonNull final ActorRoleAssembler actorRoleAssembler;
+    private @NonNull final ActorRoleRepository actorRoleRepository;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ActorRoleResource actorRole(@PathVariable int id) {

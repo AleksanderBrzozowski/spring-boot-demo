@@ -2,6 +2,7 @@ package com.example;
 
 import com.example.entity.*;
 import com.example.repository.*;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -22,11 +23,11 @@ import static java.util.Arrays.asList;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class SampleDataLoader implements ApplicationListener<ContextRefreshedEvent>{
 
-    private final ActorRepository actorRepository;
-    private final FilmRepository filmRepository;
-    private final ActorRoleRepository actorRoleRepository;
-    private final RatingRepository ratingRepository;
-    private final PictureRepository pictureRepository;
+    private @NonNull final ActorRepository actorRepository;
+    private @NonNull final FilmRepository filmRepository;
+    private @NonNull final ActorRoleRepository actorRoleRepository;
+    private @NonNull final RatingRepository ratingRepository;
+    private @NonNull final PictureRepository pictureRepository;
 
     @Override
     @Transactional

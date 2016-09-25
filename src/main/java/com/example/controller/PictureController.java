@@ -10,6 +10,7 @@ import com.example.repository.PictureRepository;
 import com.example.resource.ActorResource;
 import com.example.resource.FilmResource;
 import com.example.resource.PictureResource;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageImpl;
@@ -35,10 +36,10 @@ import java.util.List;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class PictureController {
 
-    private final PictureRepository pictureRepository;
-    private final PictureAssembler pictureAssembler;
-    private final ActorAssembler actorAssembler;
-    private final FilmAssembler filmAssembler;
+    private @NonNull final PictureRepository pictureRepository;
+    private @NonNull final PictureAssembler pictureAssembler;
+    private @NonNull final ActorAssembler actorAssembler;
+    private @NonNull final FilmAssembler filmAssembler;
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     public PictureResource picture(@PathVariable String id) {

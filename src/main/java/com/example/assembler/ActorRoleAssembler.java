@@ -2,6 +2,7 @@ package com.example.assembler;
 
 import com.example.entity.ActorRole;
 import com.example.resource.ActorRoleResource;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
@@ -19,8 +20,8 @@ import static java.util.Arrays.asList;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class ActorRoleAssembler extends AbstractAssembler<ActorRole, ActorRoleResource>{
 
-    private final ActorAssembler actorAssembler;
-    private final FilmAssembler filmAssembler;
+    private @NonNull final ActorAssembler actorAssembler;
+    private @NonNull final FilmAssembler filmAssembler;
 
     @Override
     public Class<ActorRoleResource> resourceClass() {

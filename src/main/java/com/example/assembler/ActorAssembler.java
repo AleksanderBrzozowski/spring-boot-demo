@@ -5,6 +5,7 @@ import com.example.entity.Actor;
 import com.example.resource.ActorResource;
 import com.example.resource.ActorRoleResource;
 import com.example.resource.PictureResource;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
@@ -24,7 +25,7 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class ActorAssembler extends AbstractAssembler<Actor, ActorResource> {
 
-    private final RelProvider relProvider;
+    private @NonNull final RelProvider relProvider;
 
     @Override
     public ActorResource toResource(Actor actor) {

@@ -5,6 +5,7 @@ import com.example.entity.Film;
 import com.example.resource.ActorResource;
 import com.example.resource.FilmResource;
 import com.example.resource.PictureResource;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
@@ -25,7 +26,7 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 @Service
 public class FilmAssembler  extends AbstractAssembler<Film, FilmResource>{
 
-    private final RelProvider relProvider;
+    private @NonNull final RelProvider relProvider;
 
     @Override
     public FilmResource instantiateResource(Film entity) {
