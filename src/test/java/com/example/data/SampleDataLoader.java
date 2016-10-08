@@ -1,4 +1,4 @@
-package com.example;
+package com.example.data;
 
 import com.example.entity.*;
 import com.example.repository.*;
@@ -21,7 +21,7 @@ import static java.util.Arrays.asList;
 
 @Component
 @RequiredArgsConstructor
-@Profile("production")
+@Profile("test")
 public class SampleDataLoader implements ApplicationListener<ContextRefreshedEvent>{
 
     @NonNull private final ActorRepository actorRepository;
@@ -33,14 +33,14 @@ public class SampleDataLoader implements ApplicationListener<ContextRefreshedEve
     @Override
     @Transactional
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-        Actor actor = actorRepository.save(new Actor("Cezary Pazura", LocalDate.of(1962, 6, 13), new Locale("pl", "PL"), "a0-pic"));
-        Film film = filmRepository.save(new Film("Kiler", LocalDate.of(1997, 11, 17), new Locale("pl","PL"), "mainPic"));
+        Actor actor = actorRepository.save(new Actor("Aktor1", LocalDate.of(1962, 6, 13), new Locale("pl", "PL"), "a0-pic"));
+        Film film = filmRepository.save(new Film("Film1", LocalDate.of(1997, 11, 17), new Locale("pl","PL"), "mainPic"));
         Rating rating = ratingRepository.save(new Rating());
-        actorRoleRepository.save(new ActorRole("Jerzy Kiler", "role-pic-url", rating, film, actor));
+        actorRoleRepository.save(new ActorRole("AktoRole", "role-pic-url", rating, film, actor));
 
-        Actor actor1 = actorRepository.save(new Actor("Jerzy Stuhr", LocalDate.of(1947, 4 ,18), new Locale("pl", "PL"), "a1-pic"));
+        Actor actor1 = actorRepository.save(new Actor("Aktor2", LocalDate.of(1947, 4 ,18), new Locale("pl", "PL"), "a1-pic"));
         Rating rating1 = ratingRepository.save(new Rating());
-        actorRoleRepository.save(new ActorRole("Komisarz Jerzy Ryba", "role1-pic-url", rating1, film, actor1));
+        actorRoleRepository.save(new ActorRole("Role2", "role1-pic-url", rating1, film, actor1));
 
         Picture picture = new Picture("some url", film);
         picture.getActorsSet().addAll(asList(actor, actor1));
