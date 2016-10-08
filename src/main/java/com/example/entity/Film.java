@@ -2,6 +2,7 @@ package com.example.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -18,6 +19,7 @@ import java.util.Set;
 @Getter
 @NoArgsConstructor
 @Entity
+@Setter
 public class Film extends AbstractEntity<Integer>{
 
     private String name;

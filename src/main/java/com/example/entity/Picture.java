@@ -3,6 +3,7 @@ package com.example.entity;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.hateoas.Identifiable;
 
 import javax.persistence.*;
@@ -17,6 +18,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 @Entity
+@Setter
 public class Picture implements Identifiable<String>{
 
     @Id
