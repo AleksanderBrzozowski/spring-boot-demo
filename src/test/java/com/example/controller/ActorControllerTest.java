@@ -1,9 +1,9 @@
 package com.example.controller;
 
 import com.example.resource.ActorResource;
-import com.example.resource.ResourceNotFoundException;
 import org.junit.Before;
 import org.junit.Test;
+import org.omg.CORBA.Object;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -21,17 +21,18 @@ public class ActorControllerTest extends AbstractControllerTest {
     }
 
     @Test
-    public void whenActorNotNullExpectActor() throws Exception {
-        ResponseEntity<ActorResource> response =
-                restTemplate.getForEntity("/actors/1", ActorResource.class);
-        assertEquals(response.getStatusCode(), HttpStatus.OK);
+    public void whenActorNotNullExpectHttpOk() throws Exception {
+        resourceFound("/actors/1");
+        resourceFound("/actors/1/roles");
+        resourceFound("/actors/1/pictures");
     }
 
     @Test
-    public void whenActorNullExpectException() throws Exception {
-        resourceNotFoundAssert("/actors/5");
+    public void whenActorNullExpectHttpNotFound() throws Exception {
+        resourceNotFound("/actors/5");
+        resourceNotFound("/actors/5/roles");
+        resourceNotFound("/actors/5/pictures");
     }
-
 }
 
 
