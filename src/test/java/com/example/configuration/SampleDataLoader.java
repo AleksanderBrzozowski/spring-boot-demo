@@ -1,10 +1,11 @@
-package com.example.data;
+package com.example.configuration;
 
 import com.example.entity.*;
 import com.example.repository.*;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
@@ -19,7 +20,7 @@ import static java.util.Arrays.asList;
  * @author Aleksander
  */
 
-@Component
+@Configuration
 @RequiredArgsConstructor
 @Profile("test")
 public class SampleDataLoader implements ApplicationListener<ContextRefreshedEvent>{

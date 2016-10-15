@@ -1,11 +1,7 @@
-package com.example.controller;
+package com.example.tests.web;
 
-import com.example.resource.ActorResource;
-import org.junit.Before;
+import com.example.AbstractControllerTest;
 import org.junit.Test;
-import org.omg.CORBA.Object;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -15,10 +11,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
  */
 
 public class ActorControllerTest extends AbstractControllerTest {
-
-    @Before
-    public void setUp() throws Exception {
-    }
 
     @Test
     public void whenActorNotNullExpectHttpOk() throws Exception {
