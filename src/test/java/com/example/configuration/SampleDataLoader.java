@@ -43,7 +43,7 @@ public class SampleDataLoader implements ApplicationListener<ContextRefreshedEve
         Rating rating1 = ratingRepository.save(new Rating());
         actorRoleRepository.save(new ActorRole("Role2", "role1-pic-url", rating1, film, actor1));
 
-        Picture picture = new Picture("some url", film);
+        Picture picture = new Picture("pic", film);
         picture.getActorsSet().addAll(asList(actor, actor1));
         pictureRepository.save(picture);
     }
